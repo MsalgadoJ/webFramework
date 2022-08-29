@@ -1,8 +1,10 @@
-export class Attibutes<T> {
+export class Attributes<T> {
   constructor(private data: T) {}
 
-  get(propName: string): string | number {
-    return this.data[propName];
+  // limits the values that key can be. For this project:
+  // name, age, id
+  get<K extends keyof T>(key: K): T[K] {
+    return this.data[key];
   }
 
   set(update: T): void {
