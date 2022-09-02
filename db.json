@@ -2,7 +2,8 @@
   "users": [
     {
       "id": 1,
-      "name": "Pablito"
+      "name": "updated name",
+      "age": 0
     },
     {
       "name": "my name",
