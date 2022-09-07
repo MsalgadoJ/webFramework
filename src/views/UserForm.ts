@@ -1,7 +1,15 @@
 import { User } from '../models/User';
 
 export class UserForm {
-  constructor(public parent: Element, public model: User) {}
+  constructor(public parent: Element, public model: User) {
+    this.bindModel();
+  }
+
+  bindModel(): void {
+    this.model.on('change', () => {
+      this.render();
+    });
+  }
 
   // we take an object which we don't know what the key
   // is going to be that has a function as an argument
@@ -12,9 +20,9 @@ export class UserForm {
     };
   }
 
-  onSetAgeClick(): void {
-    console.log('New age :D');
-  }
+  onSetAgeClick = (): void => {
+    this.model.setRandomAge();
+  };
 
   template(): string {
     return `
@@ -44,6 +52,7 @@ export class UserForm {
   // takes the template and appends it as a child
   // to our parent element
   render(): void {
+    this.parent.innerHTML = '';
     const templateElement = document.createElement('template');
     templateElement.innerHTML = this.template();
 
