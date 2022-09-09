@@ -1,8 +1,8 @@
 import { User } from './models/User';
-import { UserForm } from './views/UserForm';
+import { UserEdit } from './views/UserEdit';
 
 const user = User.buildUser({ name: 'Capi', age: 31 });
 
-const userForm = new UserForm(document.getElementById('root')!, user); // Assert that e is non-null and access name;
+const userEdit = new UserEdit(document.getElementById('root')!, user); // Assert that the selector is non-null
 
-userForm.render();
+userEdit.render();
